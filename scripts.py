@@ -5,6 +5,11 @@ from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
 from datacenter.models import Commendation, Lesson, Schoolkid
 
 
+COMMENDATIONS =['Молодец!', 'Отлично!', 'Хорошо!', 'Гораздо лучше, чем я ожидал!', 'Ты меня приятно удивил!',
+                'Великолепно!', 'Прекрасно!', 'Ты меня очень обрадовал!', 'Именно этого я давно ждал от тебя!',
+                'Сказано здорово – просто и ясно!']
+
+
 def fix_marks(schoolkid):
     marks = schoolkid.mark_set.all()
     bad_marks = marks.filter(points__lt=4)
@@ -16,11 +21,6 @@ def fix_marks(schoolkid):
 def remove_chastisements(schoolkid):
     chastisements = schoolkid.chastisement_set.all()
     chastisements.delete()
-
-
-COMMENDATIONS =['Молодец!', 'Отлично!', 'Хорошо!', 'Гораздо лучше, чем я ожидал!', 'Ты меня приятно удивил!',
-                'Великолепно!', 'Прекрасно!', 'Ты меня очень обрадовал!', 'Именно этого я давно ждал от тебя!',
-                'Сказано здорово – просто и ясно!']
 
 
 def create_commendation(name, name_subject):
