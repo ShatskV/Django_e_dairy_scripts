@@ -13,13 +13,16 @@
 - Вызовите необходимые функции, добавив правильные аргументы
 
 ## Описание функций:
+- **find_schoolkid(name)**
+    - Поиск ученика в базе, возвращает объект Schoolkid
+
 - **fix_marks(schoolkid)**
     - Замена всех плохих оценок ученика (двоек и троек) на 5 
-    - schoolkid - объект модели Schoolkid
+    - schoolkid - объект модели Schoolkid, можно его получить через функцию **find_schoolkid**
 
 - **remove_chastisements(schoolkid)**
     - Удаление всех замечаний ученика 
-    - schoolkid - объект модели Schoolkid
+    - schoolkid - объект модели Schoolkid, можно его получить через функцию **find_schoolkid**
 
 - **create_commendation(name, name_subject)**
     - Создание похвалы ученика от учителя по предмету

@@ -12,10 +12,7 @@ COMMENDATIONS =['Молодец!', 'Отлично!', 'Хорошо!', 'Гора
 
 def fix_marks(schoolkid):
     marks = schoolkid.mark_set.all()
-    bad_marks = marks.filter(points__lt=4)
-    for bad_mark in bad_marks:
-        bad_mark.points = 5
-        bad_mark.save()
+    marks.filter(points__lt=4).update(points=5)
 
 
 def remove_chastisements(schoolkid):
@@ -47,3 +44,15 @@ def create_commendation(name, name_subject):
                                     teacher=last_lesson.teacher)
     else:
         print('Похвала уже существует!')
+
+
+def find_schoolkid(name):
+    try: 
+        child = Schoolkid.objects.get(full_name__contains=name)
+    except MultipleObjectsReturned:
+        print('Найдено несколько учеников! Уточните запрос!')
+        return
+    except ObjectDoesNotExist:
+        print('Не найдено ни одного ученика!')
+        return
+    return child
